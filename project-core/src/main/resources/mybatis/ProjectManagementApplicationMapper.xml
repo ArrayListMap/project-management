@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhichubao.project.core.mapper.ProjectManagementApplicationMapper">
+  <resultMap id="BaseResultMap" type="com.zhichubao.project.model.domain.ProjectManagementApplication">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="application_code" jdbcType="VARCHAR" property="applicationCode" />
+    <result column="tenant_id" jdbcType="BIGINT" property="tenantId" />
+    <result column="application_status" jdbcType="INTEGER" property="applicationStatus" />
+    <result column="application_name" jdbcType="VARCHAR" property="applicationName" />
+    <result column="department_id" jdbcType="BIGINT" property="departmentId" />
+    <result column="legal_entity_id" jdbcType="BIGINT" property="legalEntityId" />
+    <result column="project_charge_person_id" jdbcType="BIGINT" property="projectChargePersonId" />
+    <result column="purchase_type" jdbcType="INTEGER" property="purchaseType" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="requirement_description" jdbcType="VARCHAR" property="requirementDescription" />
+    <result column="return_on_investment" jdbcType="VARCHAR" property="returnOnInvestment" />
+    <result column="copy_person_id" jdbcType="VARCHAR" property="copyPersonId" />
+    <result column="vendor_name" jdbcType="VARCHAR" property="vendorName" />
+    <result column="linkman" jdbcType="VARCHAR" property="linkman" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="total_price" jdbcType="DECIMAL" property="totalPrice" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, application_code, tenant_id, application_status, application_name, department_id, 
+    legal_entity_id, project_charge_person_id, purchase_type, start_time, end_time, requirement_description, 
+    return_on_investment, copy_person_id, vendor_name, linkman, phone, email, remark, 
+    total_price, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from project_management_application
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from project_management_application
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zhichubao.project.model.domain.ProjectManagementApplication" useGeneratedKeys="true" keyProperty="id">
+    insert into project_management_application (id, application_code, tenant_id, 
+      application_status, application_name, department_id, 
+      legal_entity_id, project_charge_person_id, purchase_type, 
+      start_time, end_time, requirement_description, 
+      return_on_investment, copy_person_id, vendor_name, 
+      linkman, phone, email, 
+      remark, total_price, is_delete
+      )
+    values (#{id,jdbcType=BIGINT}, #{applicationCode,jdbcType=VARCHAR}, #{tenantId,jdbcType=BIGINT}, 
+      #{applicationStatus,jdbcType=INTEGER}, #{applicationName,jdbcType=VARCHAR}, #{departmentId,jdbcType=BIGINT}, 
+      #{legalEntityId,jdbcType=BIGINT}, #{projectChargePersonId,jdbcType=BIGINT}, #{purchaseType,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{requirementDescription,jdbcType=VARCHAR}, 
+      #{returnOnInvestment,jdbcType=VARCHAR}, #{copyPersonId,jdbcType=VARCHAR}, #{vendorName,jdbcType=VARCHAR}, 
+      #{linkman,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{totalPrice,jdbcType=DECIMAL}, #{isDelete,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhichubao.project.model.domain.ProjectManagementApplication" useGeneratedKeys="true" keyProperty="id">
+    insert into project_management_application
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="applicationCode != null">
+        application_code,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="applicationStatus != null">
+        application_status,
+      </if>
+      <if test="applicationName != null">
+        application_name,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="legalEntityId != null">
+        legal_entity_id,
+      </if>
+      <if test="projectChargePersonId != null">
+        project_charge_person_id,
+      </if>
+      <if test="purchaseType != null">
+        purchase_type,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="requirementDescription != null">
+        requirement_description,
+      </if>
+      <if test="returnOnInvestment != null">
+        return_on_investment,
+      </if>
+      <if test="copyPersonId != null">
+        copy_person_id,
+      </if>
+      <if test="vendorName != null">
+        vendor_name,
+      </if>
+      <if test="linkman != null">
+        linkman,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="totalPrice != null">
+        total_price,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="applicationCode != null">
+        #{applicationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="applicationStatus != null">
+        #{applicationStatus,jdbcType=INTEGER},
+      </if>
+      <if test="applicationName != null">
+        #{applicationName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="legalEntityId != null">
+        #{legalEntityId,jdbcType=BIGINT},
+      </if>
+      <if test="projectChargePersonId != null">
+        #{projectChargePersonId,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseType != null">
+        #{purchaseType,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requirementDescription != null">
+        #{requirementDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="returnOnInvestment != null">
+        #{returnOnInvestment,jdbcType=VARCHAR},
+      </if>
+      <if test="copyPersonId != null">
+        #{copyPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorName != null">
+        #{vendorName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrice != null">
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhichubao.project.model.domain.ProjectManagementApplication">
+    update project_management_application
+    <set>
+      <if test="applicationCode != null">
+        application_code = #{applicationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="applicationStatus != null">
+        application_status = #{applicationStatus,jdbcType=INTEGER},
+      </if>
+      <if test="applicationName != null">
+        application_name = #{applicationName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="legalEntityId != null">
+        legal_entity_id = #{legalEntityId,jdbcType=BIGINT},
+      </if>
+      <if test="projectChargePersonId != null">
+        project_charge_person_id = #{projectChargePersonId,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseType != null">
+        purchase_type = #{purchaseType,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requirementDescription != null">
+        requirement_description = #{requirementDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="returnOnInvestment != null">
+        return_on_investment = #{returnOnInvestment,jdbcType=VARCHAR},
+      </if>
+      <if test="copyPersonId != null">
+        copy_person_id = #{copyPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="vendorName != null">
+        vendor_name = #{vendorName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrice != null">
+        total_price = #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhichubao.project.model.domain.ProjectManagementApplication">
+    update project_management_application
+    set application_code = #{applicationCode,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=BIGINT},
+      application_status = #{applicationStatus,jdbcType=INTEGER},
+      application_name = #{applicationName,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=BIGINT},
+      legal_entity_id = #{legalEntityId,jdbcType=BIGINT},
+      project_charge_person_id = #{projectChargePersonId,jdbcType=BIGINT},
+      purchase_type = #{purchaseType,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      requirement_description = #{requirementDescription,jdbcType=VARCHAR},
+      return_on_investment = #{returnOnInvestment,jdbcType=VARCHAR},
+      copy_person_id = #{copyPersonId,jdbcType=VARCHAR},
+      vendor_name = #{vendorName,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      total_price = #{totalPrice,jdbcType=DECIMAL},
+      is_delete = #{isDelete,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

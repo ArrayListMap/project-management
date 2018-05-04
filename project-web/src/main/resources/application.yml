@@ -1,0 +1,21 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://139.199.130.124:3306/project_management?characterEncoding=UTF-8
+  redis:
+    host: 47.92.90.61
+    password: zhichubao
+  session:
+    store-type: redis
+pagehelper:
+    offset-as-page-num: true
+    row-bounds-with-count: true
+    page-size-zero: true
+    reasonable: true
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+
