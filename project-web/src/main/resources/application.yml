@@ -11,11 +11,18 @@ spring:
     password: zhichubao
   session:
     store-type: redis
+  thymeleaf:
+    prefix:
+    suffix:
+##page插件配置
 pagehelper:
     offset-as-page-num: true
     row-bounds-with-count: true
     page-size-zero: true
     reasonable: true
+##mybatis 配置
 mybatis:
   mapper-locations: classpath:mybatis/*.xml
+##视图配置
+
 
